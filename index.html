@@ -4,11 +4,11 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Data modelling: Blueprinting successful projects</title>
 
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/league.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/monokai.css">
@@ -25,8 +25,320 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h2>Data modelling: Blueprinting successful projects</h2>
+
+					<p>Tomislav Buljević</p>
+
+					<p>@tomebuljevic</p>
+				</section>
+				<section>
+					<section>
+						<h3>What <u>is</u> data modelling?</h3>
+					</section>
+					<section>
+						Process of creating a model of data stored in the database.
+					</section>
+					<section>
+						<ul>
+							<li>data objects</li>
+							<li>their relationships</li>
+							<li>rules</li>
+						</ul>
+					</section>
+					<section>
+						<ul>
+							<li>often overlooked</li>
+							<li>grows organically</li>
+							<li>mistakes cost A LOT</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Several levels of the process</h3>
+
+						<ul>
+							<li>Conceptual</li>
+							<li>Logical</li>
+							<li>Physical</li>
+						</ul>
+					</section>
+					<section>
+						<h4>Conceptual</h4>
+
+						<ul>
+							<li>business side of the project</li>
+							<li>received through the documentation</li>
+							<li>system and database agnostic</li>
+							<li>data as the user will see it</li>
+						</ul>
+					</section>
+					<section>
+						<h4>Logical</h4>
+
+						<ul>
+							<li>development side of the project</li>
+							<li>defines the relationships of the data objects on the project basis</li>
+							<li>database agnostic</li>
+							<li>data as the developer will see it</li>
+						</ul>
+					</section>
+					<section>
+						<h4>Physical</h4>
+
+						<ul>
+							<li>development side of the project</li>
+							<li>defines the relationships of the data objects in the database (primary keys, functions, views, etc.)</li>
+							<li>data as the system will see it</li>
+							<li>depends on the implementation system</li>
+						</ul>
+					</section>
+					<section>
+						<h4>Most important level for developers?</h4>
+
+						<p>Logical</p>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Logical data modelling</h3>
+
+						<p>Structure and hierarchy of data</p>
+						<p>How one data object influences others</p>
+					</section>
+					<section>
+						<h3>How to begin?</h3>
+
+						<ul>
+							<li>take a look at the conceptual side of things</li>
+							<li>object variability (conceptually, what influences the object most?)</li>
+						</ul>
+
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Example</h3>
+						<table>
+							<thead>
+								<th>Name</th>
+								<th>Type</th>
+								<th>Colour</th>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Jazz</td>
+									<td>Sneaker</td>
+									<td>Blue / Red</td>
+								</tr>
+								<tr>
+									<td>Hip-Hop</td>
+									<td>Sneaker</td>
+									<td>Blue / Green / Red</td>
+								</tr>
+								<tr>
+									<td>Metal</td>
+									<td>Sneaker</td>
+									<td>Black</td>
+								</tr>
+								<tr>
+									<td>Posh</td>
+									<td>Oxford</td>
+									<td>Black / White</td>
+								</tr>
+								<tr>
+									<td>Student</td>
+									<td>Oxford</td>
+									<td>Black / Brown</td>
+								</tr>
+								<tr>
+									<td>Business</td>
+									<td>Oxford</td>
+									<td>Black / Brown</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+					<section>
+						<table>
+							<thead>
+							<th>Name</th>
+							<th>Colour</th>
+							<th>Region</th>
+							<th>Year</th>
+							<th>Price</th>
+							</thead>
+							<tbody>
+							<tr>
+								<td>Jazz</td>
+								<td>Blue</td>
+								<td>East</td>
+								<td>2019</td>
+								<td>€ 20</td>
+							</tr>
+							<tr>
+								<td>Jazz</td>
+								<td>Blue</td>
+								<td>West</td>
+								<td>2019</td>
+								<td>€ 22</td>
+							</tr>
+							<tr>
+								<td>Jazz</td>
+								<td>Red</td>
+								<td>East</td>
+								<td>2019</td>
+								<td>€ 15</td>
+							</tr>
+							<tr>
+								<td>Jazz</td>
+								<td>Red</td>
+								<td>West</td>
+								<td>2019</td>
+								<td>€ 17</td>
+							</tr>
+							<tr>
+								<td>Jazz</td>
+								<td>Blue</td>
+								<td>East</td>
+								<td>2020</td>
+								<td>€ 18</td>
+							</tr>
+							<tr>
+								<td>Jazz</td>
+								<td>Blue</td>
+								<td>NorthWest</td>
+								<td>2020</td>
+								<td>€ 20</td>
+							</tr>
+							<tr>
+								<td>Jazz</td>
+								<td>Red</td>
+								<td>East</td>
+								<td>2020</td>
+								<td>€ 17</td>
+							</tr>
+							<tr>
+								<td>Jazz</td>
+								<td>Red</td>
+								<td>SouthWest</td>
+								<td>2020</td>
+								<td>€ 19</td>
+							</tr>
+							</tbody>
+						</table>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Needs of the client</h3>
+
+						<ul>
+							<li>select a year</li>
+							<li>select a region</li>
+							<li>show current prices</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Sort out the priorities</h3>
+
+						<p>Which element:</p>
+						<ul>
+							<li>can stand alone?</li>
+							<li>influences others the most?</li>
+							<li>has its own hierarchy?</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Start from the general, working your way to the individual</h3>
+
+						<p>Most important elements: </p>
+
+						<p>Shoe</p>
+
+						<p>Region</p>
+
+						<p>Year</p>
+
+						<p>Price</p>
+					</section>
+					<section>
+						<h3>Determine hierarchy and modularity</h3>
+
+						<p>Shoe</p>
+
+						<p>Name - changes from article to article</p>
+
+						<p>Type - changes from group to group</p>
+
+						<p>Colour - changes from article to article</p>
+					</section>
+					<section>
+						<ul>
+							<li>Does the manufacturer regularly add new models?</li>
+							<li>Do they add new colours?</li>
+							<li>Will we ever need to filter out shoes based on Type or Colour?</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>One possible solution</h3>
+					</section>
+					<section>
+						<h3>Shoe hierarchy and relations</h3>
+
+						<img src="img/shoe_relations.png" width="900" />
+
+						<small>* Done with <a href="https://dbdiagram.io">https://dbdiagram.io</a></small>
+					</section>
+					<section>
+						<h3>Price hierarchy and relations</h3>
+
+						<img src="img/price_relations.png" width="900" />
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Important guidelines</h3>
+
+						<ul>
+							<li>watch out for relations</li>
+							<li>be precise and concise</li>
+							<li>question the variability of objects</li>
+							<li>chunk-ize your model</li>
+							<li>after you create a data model, review it ...possibly with a peer</li>
+						</ul>
+					</section>
+				</section>
+<!--				<section>-->
+<!--					<section>-->
+<!--						<h3>Requirements</h3>-->
+
+<!--						<ul>-->
+<!--							<li>proper documentation</li>-->
+<!--							<li>insight into the business model of the client before start of development</li>-->
+<!--						</ul>-->
+<!--					</section>-->
+<!--				</section>-->
+<!--				<section>-->
+<!--					<section>-->
+<!--						<h3>Who creates the data model?</h3>-->
+<!--					</section>-->
+<!--					<section>-->
+
+<!--					</section>-->
+<!--					<section-->
+
+<!--						<p>Creating a data model from the outset takes time.</p>-->
+<!--						<p>Significantly less time than going back and reworking the project once you realize a mistake has been made.</p>-->
+<!--					</section>-->
+<!--				</section>-->
+				<section>
+					<section><h3>Questions?</h3></section>
+					<section><h3>Thank you</h3></section>
+				</section>
 			</div>
 		</div>
 
