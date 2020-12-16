@@ -40,17 +40,30 @@
 						<p>Process of creating a model of data stored in the database.</p>
 
 						<ul>
-							<li class="fragment fade">data objects</li>
+							<li class="fragment fade">data objects (entities)</li>
 							<li class="fragment fade">their relationships</li>
 							<li class="fragment fade">rules</li>
 						</ul>
+
+						<aside class="notes">
+							When creating a model of data, we need to pay attention to data objects, their relationships and the rules which guide those relationships.
+						</aside>
 					</section>
 					<section>
+						<h3>Problems surrounding data modelling?</h3>
+
 						<ul>
 							<li class="fragment fade">often overlooked</li>
 							<li class="fragment fade">grows organically</li>
 							<li class="fragment fade">mistakes cost A LOT</li>
 						</ul>
+
+						<aside class="notes">
+							Data modelling is often overlooked and grows organically. Developers often do not see a need for creating a data model beforehand since they already know the entities in a project.<br>
+							<br>
+							But mistakes can and do cost a lot. Imagine an entity which has a certain attribute. This attribute covers the case for the time being, but 6 months later, the application for the
+							attribute changes. The cost part is hidden in the amount of time needed to refactor things.
+						</aside>
 					</section>
 				</section>
 				<section data-background-image="img/levels.jpg">
@@ -78,7 +91,7 @@
 
 						<ul>
 							<li class="fragment fade">development side of the project</li>
-							<li class="fragment fade">defines the relationships of the data objects</li>
+							<li class="fragment fade">defines the logical relationships of the data objects</li>
 							<li class="fragment fade">database agnostic</li>
 							<li class="fragment fade">data as the developer will see it</li>
 						</ul>
@@ -97,75 +110,132 @@
 						<h4>Most important level for developers?</h4>
 
 						<h3 class="fragment fade">Logical</h3>
+
+						<aside class="notes">
+							The logical level is most important for developers since it gives devs a bigger picture of the system which is being built.
+							It acts as a bridge between the conceptual and physical levels since this is the part where business and development coincide.
+						</aside>
 					</section>
 				</section>
 				<section data-background-image="img/logical.jpg">
 					<section>
 						<h3>Logical data modelling</h3>
 
-						<p>Structure and hierarchy of data</p>
-						<p>How one data object influences others</p>
+						<ul>
+							<li class="fragment fade">Structure and hierarchy of data</li>
+							<li class="fragment fade">How one data object influences others</li>
+							<li class="fragment fade">How usable is the data object to the end-user</li>
+						</ul>
+
+						<aside class="notes">
+							Logical data modelling takes structure and hierarchy of data into consideration, and this is the step where we
+							determine how a data object influences others.<br>
+							<br>
+							Also, this is the step where you might want to start thinking about the usability of entities (not just the
+							interaction between them, but also what we want to show the user based on business decisions.
+						</aside>
 					</section>
 					<section>
 						<h3>How to begin?</h3>
 
 						<ul>
-							<li>take a look at the conceptual side of things</li>
-							<li>object variability (conceptually, what influences the object most?)</li>
+							<li class="fragment fade">take a look at the conceptual side of things</li>
+							<li class="fragment fade">object variability (conceptually, what influences the object most?)</li>
 						</ul>
 					</section>
 					<section>
 						<h3>What to take into consideration</h3>
 
 						<ul>
-							<li>how we are going to fetch data from the database</li>
-							<li>how data should be input</li>
-							<li>which groups of data are shown together on a single screen</li>
+							<li class="fragment fade">how we are going to fetch data from the database</li>
+							<li class="fragment fade">how many objects are expected in the database</li>
+							<li class="fragment fade">how data should be input</li>
+							<li class="fragment fade">which groups of data are shown together on a single screen</li>
 						</ul>
+					</section>
+					<section>
+						<h3>How to avoid common pitfalls</h3>
+
+						<ul>
+							<li class="fragment fade">try to make your entities small(ish)</li>
+							<li class="fragment fade">the more entities, the merrier</li>
+							<li class="fragment fade">revise the relationships between entities</li>
+						</ul>
+
+						<aside class="notes">
+							Entities are, when used in a giant platform, almost living, breathing things, subject to change.
+							When designing an entity, one should ask themself: What is the absolute minimum of data I need to store in that entity?<br>
+							<br>
+							I'm not saying you should make an entity out of every single particle in your system, but chunkizing content into smaller
+							entities actually helps you make the system a modular monolith.<br>
+							<br>
+							One should not only look at the relationship and follow a pattern. Instead, one should also consider the context of said relationship
+							and how it affects the overall project. Example: One-to-Many vs. Many-to-One.
+						</aside>
 					</section>
 				</section>
 				<section data-background-image="img/shoes.jpg">
 					<section>
 						<h3>Example</h3>
+
+						<ul>
+							<li class="fragment fade">shoe manufacturer wants to revamp their business</li>
+							<li class="fragment fade">all they have is a catalogue of products</li>
+						</ul>
+					</section>
+					<section>
 						<table>
 							<thead>
 								<th>Name</th>
-								<th>Type</th>
-								<th>Colour</th>
+								<th>Model</th>
+								<th>Color</th>
+								<th>Size</th>
 							</thead>
 							<tbody>
 								<tr>
 									<td>Jazz</td>
 									<td>Sneaker</td>
-									<td>Blue / Red</td>
+									<td>Blue / Red / White</td>
+									<td>40-45</td>
 								</tr>
 								<tr>
 									<td>Hip-Hop</td>
 									<td>Sneaker</td>
 									<td>Blue / Green / Red</td>
+									<td>40-42</td>
 								</tr>
 								<tr>
 									<td>Metal</td>
 									<td>Sneaker</td>
 									<td>Black</td>
+									<td>40-43</td>
 								</tr>
 								<tr>
 									<td>Posh</td>
 									<td>Oxford</td>
 									<td>Black / White</td>
+									<td>40-46</td>
 								</tr>
 								<tr>
 									<td>Student</td>
 									<td>Oxford</td>
 									<td>Black / Brown</td>
+									<td>40-46</td>
 								</tr>
 								<tr>
 									<td>Business</td>
 									<td>Oxford</td>
 									<td>Black / Brown</td>
+									<td>40-46</td>
 								</tr>
 							</tbody>
 						</table>
+
+						<aside class="notes">
+							This is the client's selection.<br>
+							They have a selection of sneakers, and a selection of oxfords available in a variety of colours.<br>
+							They want to have a digital catalogue similar to the print, but on a page. They also want to search the models and get some results.
+						</aside>
 					</section>
 					<section>
 						<table>
@@ -235,27 +305,47 @@
 							</tr>
 							</tbody>
 						</table>
+
+						<aside class="notes">
+							The client owns a number of factories in a country.<br>
+							Each Price for each Region of a country is calculated by that region's distance from a factory due to logistics.<br>
+							Also, Prices are determined based on the sales of an item. If a model is sold more the previous year, the price will go up, and vice versa.<br>
+							The client wants to enter prices manually.
+						</aside>
 					</section>
 				</section>
 				<section data-background-image="img/shoes.jpg">
 					<section>
-						<h3>Needs of the client</h3>
+						<h3>Model observations</h3>
 
 						<ul>
-							<li>select a year</li>
-							<li>select a region</li>
-							<li>show current prices</li>
-							<li>have an archive of prices</li>
+							<li class="fragment fade-down">a single shoe has a name, model, color and size</li>
+							<li class="fragment fade-down">the price for the shoe changes depending on the year and region</li>
+							<li class="fragment fade-down">there's a possibility for the region to change in time</li>
 						</ul>
 					</section>
+					<section>
+						<h3>Needs of the client</h3>
+
+						<p>On the search page, the client wants to: </p>
+
+						<ul>
+							<li>select a region</li>
+							<li>show prices for the current year</li>
+							<li>have an archive of the prices</li>
+						</ul>
+					</section>
+				</section>
+				<section data-background-image="img/shoes.jpg">
 					<section>
 						<h3>Sort out the priorities</h3>
 
 						<p>Which element:</p>
 						<ul>
-							<li>can stand alone?</li>
+							<li>can/should stand alone?</li>
 							<li>influences others the most?</li>
 							<li>has its own hierarchy?</li>
+							<li>can/should be replaced with an attribute?</li>
 						</ul>
 					</section>
 					<section>
@@ -263,48 +353,87 @@
 
 						<p>Most important elements: </p>
 
-						<p>Shoe</p>
+						<p class="fragment fade">Shoe</p>
 
-						<p>Region</p>
+						<p class="fragment fade">Region</p>
 
-						<p>Year</p>
+						<p class="fragment fade">Year</p>
 
-						<p>Price</p>
+						<p class="fragment fade">Price</p>
+
+						<aside class="notes">
+							Shoe is a single article, obvious enough.<br>
+							Region is also obvious since there are multiple of those objects.<br>
+							Couldn't year be a single entry for a region or a shoe? No, since we would have multiple articles with the same atributes for different years.
+							Also, if we put a year as an attribute of a region, how do we differentiate regions with the same name without that year influencing the choice?<br>
+							Can price be a field of a shoe? Again, no, since the data shows that the price for a single article changes from region to region and from year to year.<br>
+							Therefore, we conclude that these 4 entities MUST stand alone.
+						</aside>
 					</section>
+					<section>
+						<h3>The model?</h3>
+
+						<p>All the things are strings!</p>
+
+						<p><img src="img/shoe-initial.png" /></p>
+
+						<small>* Done with <a href="https://dbdiagram.io">https://dbdiagram.io</a></small>
+
+						<aside class="notes">
+							This is by far the "easiest" approach. But also, prone to most bugs, longest development time, and an endless amount of exceptions.<br>
+							<br>
+							Due to the fact that we're letting the admin enter whatever they will, the validation of this model takes an incredible amount of hard work to get right properly. And even when you think you've covered all cases, you're still not sure if you actually have.
+						</aside>
+					</section>
+				</section>
+				<section data-background-image="img/shoes.jpg">
 					<section>
 						<h3>Determine hierarchy and modularity</h3>
 
 						<p>Shoe</p>
 
-						<p>Name - changes from article to article</p>
+						<p>Name - unique for each article</p>
 
-						<p>Type - changes from group to group</p>
+						<p>Model - unique for each group</p>
 
-						<p>Colour - changes from article to article</p>
+						<p>Color - how do we determine uniqueness?</p>
+
+						<p>Size - unique for each article; a known limited range</p>
+
+						<aside class="notes">
+							Name is unique to each article. Therefore it can stand alone as field for entry.<br>
+							Model can be Oxford or Sneaker, that much is clear.<br>
+							As we can see from the table, black and white are available for sneaker and oxford, brown is available for oxford only, and blue, red, and green are available for sneaker only. Here's a possible false conclusion. This one will need to be determined with business.<br>
+							Size is a known limited range. Shoe-makers have the sizes already. So how do we approach this? Will it be a standalone object or an attribute?
+						</aside>
 					</section>
 					<section>
 						<ul>
 							<li>Does the manufacturer regularly add new models?</li>
-							<li>Do they add new colours?</li>
-							<li>Will we ever need to filter out shoes based on Type or Colour?</li>
+							<li>Do they add new colors?</li>
+							<li>Will we ever need to filter out shoes based on Type or Color or Size?</li>
 						</ul>
+					</section>
+					<section>
+						<h3>If the shoe fits...</h3>
+						<img src="img/shoe-model.png" height="500" />
 					</section>
 				</section>
 				<section data-background-image="img/shoes.jpg">
 					<section>
-						<h3>One possible solution</h3>
+						<h3>What about the rest of the model?</h3>
+
+						<ul>
+							<li>Is a region completely dependant on year?</li>
+							<li>Will we need to add new things to a region?</li>
+						</ul>
 					</section>
 					<section>
-						<h3>Shoe hierarchy and relations</h3>
+						<h3>Hierarchy and relations</h3>
 
-						<img src="img/shoe_relations.png" width="900" />
+						<p>One possible solution</p>
+						<img src="img/entire-model.png" width="900" />
 
-						<small>* Done with <a href="https://dbdiagram.io">https://dbdiagram.io</a></small>
-					</section>
-					<section>
-						<h3>Price hierarchy and relations</h3>
-
-						<img src="img/price_relations.png" width="900" />
 					</section>
 				</section>
 				<section data-background-image="img/blueprint-background.jpg">
@@ -312,24 +441,29 @@
 						<h3>Important guidelines</h3>
 
 						<ul>
-							<li>watch out for relations</li>
-							<li>be precise and concise</li>
-							<li>question the variability of objects</li>
-							<li>make it modular</li>
-							<li>after you create a data model, review it... possibly with a peer</li>
+							<li class="fragment fade-down">watch out for relations</li>
+							<li class="fragment fade-down">be precise and concise</li>
+							<li class="fragment fade-down">question the variability of objects</li>
+							<li class="fragment fade-down">make it modular</li>
+							<li class="fragment fade-down">after you create a data model, review it... possibly with a peer</li>
+							<li class="fragment fade-down">if possible, draw conclusions from historical data - it will make your life easier</li>
+							<li class="fragment fade-down">each time you add a new feature, revisit your model</li>
 						</ul>
 					</section>
 					<section>
-						<h3>Important guidelines</h3>
+						<h3>General conclusions</h3>
 
 						<blockquote>
 							"The only constant in life is change"<br>
 
 							-- Heraclitus
 						</blockquote>
-
-						<p class="fragment fade-down">Your model is not set in stone. It WILL be changed during development.</p>
-						<p class="fragment fade-down">Creating a model makes the first few weeks of development a lot easier and faster.</p>
+						<ul>
+							<li class="fragment fade-down">your model is not set in stone - it will change over time</li>
+							<li class="fragment fade-down">development is a lot easier and faster with a handy data model</li>
+							<li class="fragment fade-down">try not to abuse the model too much</li>
+							<li class="fragment fade-down">think of the future while paying your respect to the past</li>
+						</ul>
 					</section>
 				</section>
 				<section data-background-image="img/blueprint-background.jpg">
