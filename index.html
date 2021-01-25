@@ -59,9 +59,9 @@
 						</ul>
 
 						<aside class="notes">
-							Data modelling is often overlooked and grows organically. Developers often do not see a need for creating a data model beforehand since they already know the entities in a project.<br>
-							<br>
-							But mistakes can and do cost a lot. Imagine an entity which has a certain attribute. This attribute covers the case for the time being, but 6 months later, the application for the
+							Data modelling is often overlooked and grows organically. Developers often do not see a need for creating a data model beforehand, instead opting for a more top-down approach where they create the code instead of creating the data model first.<br>
+							In that regard, I'm advocating a bottom-up approach to development, since, with a good data model, you're actually laying a foundation for your application before you translate it into code.<br>
+							Because mistakes can and do cost a lot. Imagine an entity which has a certain attribute. This attribute covers the case for the time being, but 6 months later, the application for the
 							attribute changes. The cost part is hidden in the amount of time needed to refactor things.
 						</aside>
 					</section>
@@ -132,7 +132,7 @@
 							determine how a data object influences others.<br>
 							<br>
 							Also, this is the step where you might want to start thinking about the usability of entities (not just the
-							interaction between them, but also what we want to show the user based on business decisions.
+							interaction between them), but also what we want to show the user based on business decisions.
 						</aside>
 					</section>
 					<section>
@@ -148,10 +148,19 @@
 
 						<ul>
 							<li class="fragment fade">how we are going to fetch data from the database</li>
-							<li class="fragment fade">how many objects are expected in the database</li>
+							<li class="fragment fade">frequency of inputting an object in the database</li>
 							<li class="fragment fade">how data should be input</li>
 							<li class="fragment fade">which groups of data are shown together on a single screen</li>
 						</ul>
+
+						<aside class="notes">
+							Thinking about data fetching at this point helps optimize the system in the future.
+							Of course, you won't know exactly how it will grow over time, but there are some basic thing to take into consideration.<br>
+							Is this an object which will be added or updated more or less frequently over time?
+							This is an important question because we then understand the most important parts of the project.<br>
+							Is it based on user input, a predefined import, a calculation, or something else entirely?<br />
+							Groups of data shown together on a single screen are, more often than not, objects with direct interconnections.
+						</aside>
 					</section>
 					<section>
 						<h3>How to avoid common pitfalls</h3>
@@ -167,7 +176,7 @@
 							When designing an entity, one should ask themself: What is the absolute minimum of data I need to store in that entity?<br>
 							<br>
 							I'm not saying you should make an entity out of every single particle in your system, but chunkizing content into smaller
-							entities actually helps you make the system a modular monolith.<br>
+							entities actually helps you make the system more modular.<br>
 							<br>
 							One should not only look at the relationship and follow a pattern. Instead, one should also consider the context of said relationship
 							and how it affects the overall project. Example: One-to-Many vs. Many-to-One.
@@ -443,12 +452,33 @@
 						<ul>
 							<li class="fragment fade-down">watch out for relations</li>
 							<li class="fragment fade-down">be precise and concise</li>
-							<li class="fragment fade-down">question the variability of objects</li>
+							<li class="fragment fade-down">always question the variability of objects</li>
 							<li class="fragment fade-down">make it modular</li>
+						</ul>
+
+						<aside class="notes">
+							Relations are everything. The way the entities are related to one another will definitely influence them in ways you cannot even imagine.<br>
+							You really only need to put in the bare minimum into a single entity. If a field in an entity is mutable based on external factors, it's probably better to add a new entity.<br>
+							This is directly linked to the two points mentioned above because objects influence others, and you always want to lower interference as much as possible.<br>
+							If you follow the three points mentioned above, your system will be modular enough for adding new features and possibly turning them off as necessary.
+						</aside>
+					</section>
+					<section>
+						<h3>Important guidelines</h3>
+
+						<ul>
 							<li class="fragment fade-down">after you create a data model, review it... possibly with a peer</li>
 							<li class="fragment fade-down">if possible, draw conclusions from historical data - it will make your life easier</li>
 							<li class="fragment fade-down">each time you add a new feature, revisit your model</li>
+							<li class="fragment fade-down">you gotta know when to hold 'em and when to fold 'em</li>
 						</ul>
+
+						<aside class="notes">
+							Two pairs of eyes are always better than one. It's always good to get a fresh perspective on things when talking with a peer.<br>
+							Basically, if a value changed in the past, there's a high possibility of change in the future.<br>
+							When you get a request for a new feature, you'll need to see how it fits into your model and if a refactor is necessary. But this is a good thing since it lowers your technical debt.<br>
+							You can go overboard with granulation of the model. In fact, you probably will at some point. As your experience grows, you'll be able to more accurately pin point the level of granulation needed.
+						</aside>
 					</section>
 					<section>
 						<h3>General conclusions</h3>
